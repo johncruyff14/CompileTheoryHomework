@@ -1,0 +1,4 @@
+#该程序的作用是实现九九乘法表
+for m in range(1,10):
+    for n in range(1,10): #这一行的作用是
+        print('%s×%s=%s'%(m,n,m*n))
