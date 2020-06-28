@@ -1,0 +1,46 @@
+program sam;
+var
+b:array[1..40,1..6] of extended;
+k,long,temp:integer;
+n:string;
+procedure input;
+var
+i,j:integer;
+begin
+readln(long);
+readln(k);
+readln(n);
+for i:=1 to long do
+for j:=1 to k do
+b[i,j]:=-1;
+end;
+function check(l,t:integer):extended;
+var
+i:integer;
+j,max:extended;
+begin
+if t=0 then
+begin
+val(copy(n,l,long),j,temp);
+check:=j;
+end
+else
+begin
+if b[l,t]=-1 then
+begin
+j:=0;max:=0;
+for i:=l to long-t do
+begin
+val(copy(n,l,i-l+1),j,temp);
+j:=j*check(i+1,t-1);
+if j>max then max:=j;
+end;
+b[l,t]:=max;
+end;
+check:=b[l,t];
+end;
+end;
+begin
+input;
+writeln(check(1,k):0:0);
+end.
